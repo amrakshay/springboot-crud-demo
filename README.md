@@ -39,6 +39,8 @@ mvn spring-boot:run
 ## Installation with docker
 ```
 cd deployment
+chmod +x build_image.sh
 ./build_image.sh
+chmod +x springboot-crud-demo.sh
 ./springboot-crud-demo.sh start
 ```
