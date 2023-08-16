@@ -3,21 +3,27 @@ package com.ensat.controllers;
 import com.ensat.entities.Product;
 import com.ensat.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-
 
 
 /**
  * Product controller.
  */
-@RestController("/products")
+//@RestController("/products")
+@Controller
 public class ProductController {
      @Autowired
      private ProductService productService;
 
-   
+
+    @GetMapping("/products")
+    public String listProducts(Model model) {
+        model.addAttribute("products", productService.listAllProducts());
+        System.out.println("Returning products:");
+        return "products";
+    }
 
     /**
      * List all products.
@@ -25,7 +31,7 @@ public class ProductController {
      * @param model
      * @return
      */
-   @GetMapping("/")
+   @GetMapping
     public String list(Model model) {
         model.addAttribute("products", productService.listAllProducts());
         System.out.println("Returning products:");
@@ -39,14 +45,14 @@ public class ProductController {
      * @param model
      * @return
      */
-    @GetMapping("/{id}")
+    @GetMapping("product/{id}")
     public String showProduct(@PathVariable Integer id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         return "productshow";
     }
 
     // Afficher le formulaire de modification du Product
-    @PutMapping("/edit/{id}")
+    @GetMapping("product/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         return "productform";
@@ -82,7 +88,7 @@ public class ProductController {
      * @param id
      * @return
      */
-    @DeleteMapping("/{id}")
+    @GetMapping("product/delete/{id}")
     public String delete(@PathVariable Integer id) {
         productService.deleteProduct(id);
         return "redirect:/products";
