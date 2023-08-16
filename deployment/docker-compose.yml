@@ -1,0 +1,10 @@
+version: "3.3"
+services:
+  springboot-crud-demo:
+    container_name: springboot-crud-demo
+    image: springboot-crud-demo:latest
+    ports:
+      - "8080:8080"
+      - "3308:3306"
+    deploy:
+      mode: global
