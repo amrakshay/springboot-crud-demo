@@ -44,3 +44,9 @@ chmod +x build_image.sh
 chmod +x springboot-crud-demo.sh
 ./springboot-crud-demo.sh start
 ```
+
+## API Documentation
+https://documenter.getpostman.com/view/28715176/2s9Y5QzkxV
+
+## UI Access Link
+http://localhost:8080/products
