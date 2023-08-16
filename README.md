@@ -35,3 +35,10 @@ run this command in the command line:
 ```
 mvn spring-boot:run
 ```
+
+## Installation with docker
+```
+cd deployment
+./build_image.sh
+./springboot-crud-demo.sh start
+```
